@@ -27,6 +27,8 @@ namespace Lab.ClientFunctionApp
             log.LogInformation("C# HTTP trigger function processed a request.");
             var appConfiguration = new AppConfiguration();
             _configuration.Bind(appConfiguration);
+            var serviceEndpoint = appConfiguration.ServiceFunctionAddress ??
+                                  throw new ArgumentNullException(nameof(appConfiguration.ServiceFunctionAddress));
             
             string name = req.Query["name"];
 
