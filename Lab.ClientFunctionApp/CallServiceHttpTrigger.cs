@@ -29,7 +29,7 @@ namespace Lab.ClientFunctionApp
             _configuration.Bind(appConfiguration);
             var serviceEndpoint = appConfiguration.ServiceFunctionAddress ??
                                   throw new ArgumentNullException(nameof(appConfiguration.ServiceFunctionAddress));
-            
+            log.LogInformation("serviceEndpoint: {ServiceEndpoint}", serviceEndpoint);
             string name = req.Query["name"];
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
